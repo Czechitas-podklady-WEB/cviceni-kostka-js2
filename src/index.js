@@ -1,7 +1,8 @@
-import { HodKostkou } from "./components/HodKostkou/index.js"
-import './style.css';
+import { HodKostkou } from "./components/HodKostkou/index.js";
+import "./style.css";
+
+const hraci = [{ jmeno: "Jana" }, { jmeno: "Eliška" }, { jmeno: "Kristina" }];
 
 const appElement = document.getElementById("app");
-appElement.append(HodKostkou({jmeno: "Filip"}))
-appElement.append(HodKostkou({jmeno: "Jakub"}))
-appElement.append(HodKostkou({jmeno: "Martin"}))
+
+appElement.append(...hraci.map(hrac => HodKostkou(hrac)));
