@@ -1,3 +1,4 @@
+import "./style.css";
 import side1 from "./img/side1.svg"
 import side2 from "./img/side2.svg"
 import side3 from "./img/side3.svg"
@@ -16,6 +17,9 @@ const sides = [
 
 export const Kostka = ({cislo}) => {
     const kostkaElement = document.createElement("div");
-    kostkaElement.innerHTML = `<img src="${sides[cislo - 1]}" alt="číslo ${cislo}"/>`;
+    kostkaElement.classList.add("kostka")
+    if (cislo !== undefined) {
+        kostkaElement.innerHTML = `<img src="${sides[cislo - 1]}" alt="číslo ${cislo}"/>`;
+    }
     return kostkaElement;
 }

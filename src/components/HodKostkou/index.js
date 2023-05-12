@@ -3,24 +3,28 @@ import "./style.css";
 
 const nahodneCisloNaKostce = () => Math.floor(Math.random() * 6 + 1);
 
-export const HodKostkou = () => {
-  let kostkaComp = Kostka({ cislo: 6 });
+export const HodKostkou = ({jmeno, barva}) => {
+  let kostkaComp = Kostka({});
 
   const tlacitkoElm = document.createElement("button");
   tlacitkoElm.textContent = "Hoď!";
   tlacitkoElm.addEventListener("click", () => {
-    const puvodniKostkaComp = kostkaComp;
-    kostkaComp = Kostka({ cislo: nahodneCisloNaKostce() });
-    puvodniKostkaComp.replaceWith(kostkaComp);
-
-    // alternativa
-    //const novaKostkaKomp = Kostka({cislo: nahodneCisloNaKostce()});
-    //kostkaComp.replaceWith(novaKostkaKomp);
-    //kostkaComp = novaKostkaKomp;
+    fetch("https://random.kodim.app/api/diceroll")
+      .then((resp) => resp.json())
+      .then((data) => {
+        const puvodniKostkaComp = kostkaComp;
+        kostkaComp = Kostka({ cislo: data.result.number });
+        puvodniKostkaComp.replaceWith(kostkaComp);
+      });
   });
+
+  const jmenoElm = document.createElement("div");
+  jmenoElm.classList.add("jmeno");
+  jmenoElm.textContent = jmeno;
 
   const hodKostkou = document.createElement("div");
   hodKostkou.classList.add("hod-kostkou");
+  hodKostkou.append(jmenoElm);
   hodKostkou.append(kostkaComp);
   hodKostkou.append(tlacitkoElm);
   return hodKostkou;
