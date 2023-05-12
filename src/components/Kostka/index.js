@@ -15,9 +15,10 @@ const sides = [
     side6
 ]
 
-export const Kostka = ({cislo}) => {
-    const kostkaElement = document.createElement("div");
-    kostkaElement.classList.add("kostka")
+export const Kostka = ({cislo, barva}) => {
+    const kostkaElement = document.createElement("div");    
+    kostkaElement.classList.add("kostka");
+    kostkaElement.style.backgroundColor = barva;
     if (cislo !== undefined) {
         kostkaElement.innerHTML = `<img src="${sides[cislo - 1]}" alt="číslo ${cislo}"/>`;
     }

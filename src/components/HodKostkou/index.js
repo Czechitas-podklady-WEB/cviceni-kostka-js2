@@ -8,7 +8,7 @@ export const HodKostkou = ({ jmeno, barva }) => {
 
   const zmenCisloNaKostce = (cislo) => {
     const puvodniKostkaComp = kostkaComp;
-    kostkaComp = Kostka({ cislo: cislo });
+    kostkaComp = Kostka({ cislo: cislo, barva: barva });
     puvodniKostkaComp.replaceWith(kostkaComp);
   };
 

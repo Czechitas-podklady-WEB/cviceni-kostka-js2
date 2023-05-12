@@ -1,4 +1,6 @@
 .kostka {
     width: 100px;
     height: 100px;
+    clip-path: inset(7px);
+    border-radius: 40px;
 }
